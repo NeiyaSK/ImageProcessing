@@ -6,9 +6,9 @@
 #include <math.h>
 typedef double t_id;
 
-double deg2rad(t_id deg);
-double deg_sin(t_id deg);
-double deg_cos(t_id deg);
+double deg2rad(double deg);
+double deg_sin(double deg);
+double deg_cos(double deg);
 
 int main(void)
 {
@@ -23,14 +23,14 @@ int main(void)
     return 0;
 }
 
-double deg2rad(t_id deg)
+double deg2rad(double deg)
 {
     double rad = deg * PI/180;
 
     return rad;
 }
 
-double deg_sin(t_id deg)
+double deg_sin(double deg)
 {
     double rad = deg2rad(deg);
     double sum = rad;
@@ -44,7 +44,7 @@ double deg_sin(t_id deg)
     return sum;
 }
 
-double deg_cos(t_id deg)
+double deg_cos(double deg)
 {
     double sin = deg_sin(deg);
     double cos = sqrt(1 - sin*sin);
