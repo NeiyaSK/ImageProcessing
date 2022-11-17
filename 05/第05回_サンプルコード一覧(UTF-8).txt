@@ -1,0 +1,369 @@
+======================================================
+https://paiza.io/projects/Im_7hFsCVjP0UAxMa2QNew
+
+// Example 05-01
+#include <stdio.h>
+
+struct Person {
+    char name[20];
+    char age;
+    double weight;    // kg
+    double height;    // cm
+};
+
+int main(void){
+    struct Person a;
+    double bmi;
+
+    scanf("%s", a.name);
+    scanf("%d", &a.age);
+    scanf("%lf", &a.weight);
+    scanf("%lf", &a.height);
+
+    bmi = a.weight / ((a.height/100) * (a.height/100));
+
+    printf("Name=%s\n", a.name);
+    printf("Age=%d\n", a.age);
+    printf("BMI=%f\n", bmi);
+    
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/7d_35zHHUDPa6mKA7NVz6A
+
+// Example 05-02
+#include <stdio.h>
+
+struct Person {
+    char name[20];
+    char age;
+    double weight;    // kg
+    double height;    // cm
+};
+
+struct Index {
+    double bmi;
+    double standard;    // BMI=22
+    double biyou;        // BMI=20
+    double cinderella;    // BMI=18
+};
+
+struct Index calc(struct Person x);
+void print(struct Person p, struct Index x);
+
+int main(void){
+    struct Person b = {"Hanako", 18, 55, 160};
+    struct Index r = calc(b)    ;
+    print(b, r);
+    return 0;
+}
+
+
+struct Index calc(struct Person x) {
+    struct Index ind;
+    ind.bmi = x.weight / ((x.height/100) * (x.height/100));
+    ind.standard   = x.height/100 * x.height/100 * 22;
+    ind.biyou      = x.height/100 * x.height/100 * 20;
+    ind.cinderella = x.height/100 * x.height/100 * 18;
+
+    return ind;
+}
+
+void print(struct Person p, struct Index x) {
+    printf("[%s]\n", p.name);
+    printf("  age: %d\n", p.age);
+    printf("  weight: %.1f kg\n", p.weight);
+    printf("  height: %.1f cm\n\n", p.height);
+
+    printf("BMI = %.2f\n", x.bmi);
+    printf("-----------------------------------\n");
+    printf("  standard weight(BMI=22) = %.1f kg\n", x.standard);
+    printf("     biyou weight(BMI=20) = %.1f kg\n", x.biyou);
+    printf("cinderella weight(BMI=18) = %.1f kg\n", x.cinderella);
+    // printf("     model weight(BMI=17) = %.1f kg\n", x.model);
+    return;
+}
+
+
+======================================================
+https://paiza.io/projects/5k-FvIH6y_yzJ3qjdCUuAQ
+
+// Example 05-03
+#include <stdio.h>
+#define N 5
+struct Person2 {
+    char name[20];
+    char age;
+};
+void func2(struct Person2 *x);
+
+int main(void){
+    struct Person2 arr[N];    // 配列で宣言
+
+    for (int i=0; i<N; i++) {
+        scanf("%s", arr[i].name);    // 06-01と同様
+        scanf("%d", &arr[i].age);    // 06-01と同様
+    }
+    for (int i=0; i<N; i++)
+        func2(&arr[i]);        // アドレスを渡している
+
+    return 0;
+}
+
+void func2(struct Person2 *x) {
+    printf("Name=%s, ", x->name);
+    printf("Age=%d\n", x->age);
+
+    return;
+}
+
+
+======================================================
+https://paiza.io/projects/Q1iNF7C3RHp4EgWPA7e_1w
+
+// Example 05-04
+#include <stdio.h>
+
+struct StA {
+    int a;
+    char ch[4];
+};
+
+struct StB {
+    int a;
+    char ch[2]; // 2byte分、パディングが入る
+};
+
+int main(void){
+    struct StA a;
+    struct StB b;
+
+    printf("sizeof(int)    = %d byte\n", sizeof(int));
+    printf("sizeof(char)   = %d byte\n\n", sizeof(char));
+
+    printf("sizeof(a.a)    = %d byte\n", sizeof(a.a));
+    printf("sizeof(a.ch)   = %d byte\n", sizeof(a.ch));
+    printf("sizeof(a.a)+sizeof(b.ch)   = %d byte\n", sizeof(a.a)+sizeof(a.ch));
+    printf("sizeof(StA)   = %d byte\n\n", sizeof(struct StA)); // StAとStBは同じ大きさ
+
+    printf("sizeof(b.a)    = %d byte\n", sizeof(b.a));
+    printf("sizeof(b.ch)   = %d byte\n", sizeof(b.ch));
+    printf("sizeof(b.a)+sizeof(b.ch)   = %d byte\n", sizeof(b.a)+sizeof(b.ch));
+    printf("sizeof(StB)   = %d byte\n", sizeof(struct StB)); // StAとStBは同じ大きさ
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/DGK0m2_h-5KCe105wK1grg
+
+// Example 05-05
+#include <stdio.h>
+typedef unsigned int UINT;
+
+int main(void){
+    UINT i = 100;
+    printf("%d", i);
+    
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/B7tKfKrEVaDrxgsOxAof5g
+
+// Example 05-06
+#include <stdio.h>
+typedef struct {
+    char name[20];
+    char age;
+    double weight;    // kg
+    double height;    // cm
+} Person;
+// " struct ... } " の別名としての Person
+
+int main(void){
+    Person a = {"Hanako", 18, 55, 160};
+    double bmi;
+
+    bmi = a.weight / ((a.height/100) * (a.height/100));
+
+    printf("Name=%s\n", a.name);
+    printf("Age=%d\n", a.age);
+    printf("BMI=%f\n", bmi);
+    
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/RHce0P6Jl9iqf-vOvRm8Zg
+
+// Example 05-07: 動的配列
+#include <stdio.h>
+#include <stdlib.h>
+int main(void){
+    int n;
+    scanf("%d", &n);  // 配列の要素数を入力
+    
+    // intのサイズ×要素数分の領域を確保して、
+    // intポインタ型にキャストして返す
+    int *arr = (int *)malloc(sizeof(int) * n);
+    
+    for(int i=0; i < n; i++) 
+        arr[i] = i * i; // *(arr+i) = i * i; でも同じこと
+    
+    for(int i=0; i < n; i++)
+        printf("arr[%d] = %d\n", i, arr[i]);
+        
+    free(arr);
+    arr = NULL;
+    
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/MIjukvD1iu9ynAMcBBc2mg
+
+// Example 05-08: 動的配列2
+#include <stdio.h>
+#include <stdlib.h>
+int main(void){
+    int n;
+    scanf("%d", &n);  // 配列の要素数を入力
+    
+    // intのサイズ×要素数分の領域を確保して、
+    // intポインタ型にキャストして返す
+    int *arr = (int *)malloc(sizeof(int) * n);
+    
+    for(int i=0; i < n; i++) 
+        arr[i] = i * i; // *(arr+i) = i * i; でも同じこと
+    
+    for(int i=0; i < n; i++)
+        printf("arr[%d] = %d\n", i, arr[i]);
+    
+    printf("\n\nrealloc()\n");
+    arr = (int *)realloc(arr, sizeof(int) * n * 3); // 3倍に増やす
+    
+    for(int i=n; i < n*3; i++) 
+        arr[i] = -i * i; // 増やした部分にはマイナスの値を
+    
+    for(int i=0; i < n*3; i++)
+        printf("arr[%d] = %d\n", i, arr[i]);
+    
+    free(arr);
+    arr = NULL;
+    
+    return 0;
+}
+
+
+======================================================
+======================================================
+
+// Example 05-09: OpenCV check
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+int main(void)
+{
+    IplImage* img;
+    cvNamedWindow("Test Window");
+    img = cvLoadImage("C:/.../mono/LENNA.bmp", CV_LOAD_IMAGE_UNCHANGED);
+
+    if (img == NULL) {
+        printf("Load Error.\n");
+        cvWaitKey(0);
+    }
+    else {
+        cvShowImage("Test Window", img);
+        printf("nChannels = %d\ndepth = %d\nwidth = %d, height = %d\n"
+            , img->nChannels, img->depth, img->width, img->height);
+        cvWaitKey(0);
+
+        cvDestroyAllWindows();
+        cvReleaseImage(&img);
+    }
+    return 0;
+}
+
+
+
+======================================================
+======================================================
+https://paiza.io/projects/LOdRH2KSuX6NjFPtjUYtkQ
+
+// No.05-A
+#include <stdio.h>
+#define N 100
+
+typedef ?????? {
+    ????????
+    …
+    ????????
+} SEISEKI;
+
+
+int main(void){
+    ????????? seiseki[N];
+    for (int i=0; i < N; i++) {
+        scanf("%d", ????????????.id);
+        if (????????????.id ?? ???) //入力の終了条件
+            break;
+        scanf("%s", ????????????.name);
+        scanf("%d", ????????????.kokugo);
+        scanf("%d", ????????????.sansu);
+        scanf("%d", ????????????.rika);
+    }
+
+    int n = 0;
+    int kokugo = 0;
+    int sansu = 0;
+    int rika = 0;
+    for (int i=0; seiseki[i].id ?? ??? && i ?? ?????; i++){ // 出力の終了条件(2条件のANDとして設定)
+        printf("%d: %s %d\n"
+                , ?????????.id
+                , ?????????.name
+                , (?????????.kokugo
+                 + ?????????.sansu
+                 + ?????????.rika) / 3);
+        n++;
+        kokugo += ?????????;
+        sansu += ?????????;
+        rika += ?????????;
+    }
+    printf("kokugo = %d\n", kokugo / n);    
+    printf("sansu = %d\n", sansu / n);    
+    printf("rika = %d\n", rika / n);    
+    
+     return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/H2mRnIImcONxz8r8yLHZHQ
+
+// No.05-B
+#include <stdio.h>
+#include <stdlib.h>
+
+int* intArr(int n);
+
+int main(void){
+    int n;
+    scanf("%d", &n);
+    int *arr = intArr(n);
+    for(int i = 0; i <n; i++)
+        printf("%d\n", arr[i]);
+    free(arr);
+
+    return 0;
+}
+
+// ここに intArr() 関数を書く
+
+
+======================================================

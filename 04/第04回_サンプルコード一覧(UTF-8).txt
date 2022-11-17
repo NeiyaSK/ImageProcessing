@@ -1,0 +1,312 @@
+======================================================
+https://paiza.io/projects/HSsWwsNrwjAzajbR-lEHrA
+
+// Example: 04-01
+#include <stdio.h>
+int main(void){
+    char data[10]={0,2,4,6,8,10,12,14,16,18};
+    int data2[10]={0,2,4,6,8,10,12,14,16,18};
+   
+    printf("(char = %d byte)\n", sizeof(char));
+    for (int i=0; i<10; i++) {
+        printf("%p: %X\n", &data[i], data[i]);
+    }
+
+    printf("\n(int = %d byte)\n", sizeof(int));
+    for (int i=0; i<10; i++) {
+        printf("%p: %X\n", &data2[i], data2[i]);
+    }
+
+    return 0;
+}
+
+
+
+
+======================================================
+https://paiza.io/projects/poqaNZF0UJqhZ46_1cUBIg
+
+// Example: 04-02
+#include <stdio.h>
+int main(void){
+	char x = 3;	// char型の変数
+	char *p;	// char型のポインタ
+	
+	p = &x;		// 変数x のアドレスをpに代入
+
+	printf("x = %d, *p = %d\n", x, (*p));	// "中身"を表示
+	printf("&x = %p\np  = %p\n", &x, p);	// "アドレス"を表示
+    
+	return 0;
+}
+
+
+
+
+======================================================
+https://paiza.io/projects/KlCFiGFiiPLZo64_6ifBlw
+
+// Example 04-03
+#include <stdio.h>
+int main(void){
+    char x = 3;
+    char *p = &x;
+    
+    printf("x = %d, *p = %d\n", x, (*p));    
+    printf("&x = %p, p = %p\n", &x, p);    
+    printf("&p = %p\n", &p);
+    
+    return 0;
+}
+
+
+
+
+======================================================
+https://paiza.io/projects/vppm6NdYHnlABJfyZWrV6g
+
+// Example 04-04
+#include <stdio.h>
+int main(void){
+    char x = 3;
+    char *p = &x;
+    
+    printf("x = %d\n", x);  		// xの値は3
+	printf("(*p) = %d\n\n", (*p));	// (*p) はxの値そのもの
+    
+    (*p) = 100;             // pの指すアドレスの中身を100に
+    printf("x = %d\n", x);  // xの中身が書き換わっている
+        
+    return 0;
+}
+
+
+
+
+======================================================
+https://paiza.io/projects/VnsJEmlxUA7yWf37ie0MTg
+
+// Example 04-05
+#include <stdio.h>
+
+void func(int a);     // プロトタイプ宣言
+void funcP(int *p);   // プロトタイプ宣言
+
+int main(void){
+    int x = 5;
+    
+    printf("1: x = %d\n", x);
+
+    func(x);
+    printf("2: x = %d\n", x);
+
+    funcP(&x);      // 変数のアドレスを渡す
+    printf("3: x = %d\n", x);
+
+    return 0;    
+}
+
+
+void func(int a) {	// 値渡し
+    a *=  2;   // a = a *2; と同じ。値を2倍にする。
+    return;
+}
+
+void funcP(int *p) {	// 参照渡し
+    (*p) *=  2;   // (*p) = (*p) *2; と同じ。値を2倍にする。
+    return;
+}
+
+
+
+
+======================================================
+https://paiza.io/projects/lJfq_hDjIGWhTolk8S7KmA
+
+// Example 04-06
+#include <stdio.h>
+int main(void){
+    int x = 100;
+
+    int   *ip = &x; 	// int型ポインタとして、xのアドレスを入れている
+    float *fp = &x; 	// float型ポインタとして、xのアドレスを入れている(入る値は同じ)
+    
+    printf("*(int *)   [%p] = %d\n", ip, *ip);	// アドレス値は一緒だが
+    printf("*(float *) ［%p］= %d\n", fp, *fp);	// デコードされる値が違う
+
+    return 0;
+}
+
+
+
+
+======================================================
+======================================================
+https://paiza.io/projects/StgEvUtk-9su5KR4WYjMng
+
+// Example 05-01
+#include <stdio.h>
+int main(void){
+    char str[] = "NMLKJIHGFEDCBA";
+    char *p1 = str;
+    int *p2 = str;
+    
+    printf("str = %s\n", str);
+    printf("str    : %p\n", str);
+    printf("&str[0]: %p\n", &str[0]);
+    printf("p1 = %p\n", p1);
+    printf("p2 = %p\n", p2);
+    printf("sizeof(char) = %d, ", sizeof(char));
+    printf("sizeof(int) = %d\n\n", sizeof(int));
+    
+    printf("str = %s\n", str);
+    printf("str[3] = %c\n", str[3]);
+    printf("*str+3 = %c\n", *str+3);
+    printf("*(str+3) = %c\n\n", *(str+3));
+
+    printf("p1 = %s\n", p1);
+    printf("p1[3] = %c\n", p1[3]);
+    printf("*p1+3 = %c\n", *p1+3);
+    printf("*(p1+3) = %c\n\n", *(p1+3));
+
+    printf("p2 = %s\n", p2);
+    printf("p2[3] = %c\n", p2[3]);
+    printf("*p2+3 = %c\n", *p2+3);
+    printf("*(p2+3) = %c\n", *(p2+3));
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/UXEeykecZeYNVE8_U9UD4A
+
+// Example 05-02
+#include <stdio.h>
+
+int main(void){
+    char data[10]={0,2,4,6,8,10,12,14,16,18};
+    char *p = data;
+
+    int n = 3;
+
+    // ①
+    printf(" data   : %p,  *data    = %d\n", data    , *data);
+    for (int i=0; i<n; i++) 
+        printf("&data[%d]: %p,   data[%d] = %d\n", i, &data[i], i, data[i]);
+        
+    // ②
+    printf("\n data   : %p,  *data    = %d\n", data    , *data);
+    for (int i=0; i<n; i++) 
+        printf("data+%d  : %p, *(data+%d) = %d\n", i, data+i, i, *(data+i));
+
+    // ③
+    printf("\n p   : %p,  *p    = %d\n", p    , *p);
+    for (int i=0; i<n; i++) 
+        printf("p+%d: %p, *(p+%d) = %d\n", i, p+i, i, *(p+i));
+    
+    // ④
+    printf("\n p   : %p,  *p    = %d\n", p    , *p);
+    for (int i=0; i<n; i++) 
+        printf("&p[%d]: %p, p[%d] = %d\n", i, &p[i], i, p[i]);
+
+    return 0;
+}
+
+
+======================================================
+https://paiza.io/projects/wdlQVni4jKu97DBDaLrm1w
+
+
+// Example 05-03
+#include <stdio.h>
+
+int main(void) {
+    char *pStr1    = "String";	// 全く同じ文字列リテラルは、
+    char *pStr2    = "String";  // 1つだけしか生成されない場合がある
+    char arrStr1[] = "String";  // (読み出ししかされないので1つあれば
+    char arrStr2[] = "String";  //  問題がない)
+    
+
+    // pStr1[0] = 's';      // 書き込み禁止領域に書き込もうとするので、
+                            // 実行時エラーとなる
+    arrStr1[0] = 's';    // 配列の中身を書き換えるだけなので、
+                         // 実行時エラーにはならない
+
+    printf("pStr1   = %s : %p\n", pStr1, pStr1);
+    printf("pStr2   = %s : %p\n", pStr2, pStr2);
+    printf("arrStr1 = %s : %p\n", arrStr1, arrStr1);
+    printf("arrStr2 = %s : %p\n", arrStr2, arrStr2);
+
+    return 0;
+}
+
+
+
+
+======================================================
+======================================================
+https://paiza.io/projects/fcrkFfJ9AO1CgNwSdSjPdQ
+
+// No.04-A
+#include <stdio.h>
+void wasa(int *wa, int *sa, int x, int y); // プロトタイプ宣言
+
+int main(void){
+	int x, y, wa, sa;
+	scanf("%d", &x);
+	scanf("%d", &y);
+	printf("x = %d, y = %d\n", x, y);
+	wasa(??????????????); // 適切な引数の指定をする
+	printf("wa = x+y = %d\nsa = x-y = %d\n", wa, sa);
+	return 0;
+}
+
+// この後に wasa() 関数を書く
+
+
+
+
+
+======================================================
+https://paiza.io/projects/qq6WhBRIZTq3T-MOHNDTqg
+
+// No.04-B
+#include <stdio.h>
+
+void my_swap(??? a, ??? b); // プロトタイプ宣言(???を埋める)
+
+int main(void){
+	int a, b;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	printf("a=%d, b=%d\n", a, b);	// 入れ替え前
+	my_swap(???a, ???b);	// ???に適切な指定をして呼び出す
+	printf("a=%d, b=%d\n", a, b);	// 入れ替え後
+	return 0;
+}
+
+// この後に my_swap() 関数を書く
+
+
+
+
+
+======================================================
+https://paiza.io/projects/9JMYwfzLxjLfOX6QCl3f8w
+
+// No.04-C
+#include <stdio.h>
+
+void scanf_d(??? a); // プロトタイプ宣言(???を埋める)
+
+int main(void){
+	int x;
+	scanf_d(???x);	// ???に適切な指定をして呼び出す
+	printf("a=%d\n", x);
+	return 0;
+}
+
+// この後に scanf_d() 関数を書く
+
+
+
