@@ -1,0 +1,4 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (ImageProcessing_temp.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+  06-B.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\ImageProcessing_Temp\ImageProcessing_temp\06-B.cpp(7,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  ImageProcessing_temp.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\ImageProcessing_Temp\Debug\06.exe

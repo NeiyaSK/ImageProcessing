@@ -1,0 +1,5 @@
+﻿  sourceTemp.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\06\06\sourceTemp.cpp(2,9): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+C:\Users\hotar\Documents\Git\ImageProcessing\06\06\sourceTemp.cpp(4,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+C:\Users\hotar\Documents\Git\ImageProcessing\06\06\sourceTemp.cpp(5,2): error C2562: 'main': 関数は 'void' 型として宣言されていますが、値を返しました。
+C:\Users\hotar\Documents\Git\ImageProcessing\06\06\sourceTemp.cpp(4): message : 'main' の宣言を確認してください
