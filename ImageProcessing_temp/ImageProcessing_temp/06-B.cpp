@@ -10,10 +10,10 @@ void main()
 	size.height = 100;
 	IplImage* img = cvCreateImage(size, IPL_DEPTH_8U, 1); // 1: グレイスケール画像
 	cvSetZero(img); // 画像データを 0(黒) で初期化
-	// ------ 灰色画像(すべての濃度値=128)の生成 ---------
+	// ------ グラデーション画像の生成 ---------
 	for (int y = 0; y < img->height; y++) {
 		for (int x = 0; x < img->width; x++) {
-			img->imageData[img->widthStep * y + x] = x;	// ピクセル値は 0～255
+			img->imageData[img->widthStep * y + x] = x;	// x座標の変化とともに濃度値も変化
 		}
 	}
 	cvNamedWindow("Gray");

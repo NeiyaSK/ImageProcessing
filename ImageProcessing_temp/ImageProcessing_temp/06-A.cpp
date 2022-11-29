@@ -16,7 +16,8 @@ void main()
 	for (int y = 0; y < img->height; y++) {
 		for (int x = 0; x < img->width; x++) {
 			img->imageData[img->widthStep * y + x] = 128;// ピクセル値は 0～255
-			if (x == 50)
+			// ----- 黒い縦線の生成 -----
+			if (x == 50)	// x座標が50の位置に生成
 			{
 				img->imageData[img->widthStep * y + x] = 0;
 			}
