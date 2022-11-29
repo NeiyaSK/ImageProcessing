@@ -7,14 +7,12 @@ int main(void){
     scanf("%d", &x);
     scanf("%d", &y);
     printf("x = %d, y = %d\n", x, y);
-    wasa(wa, sa, x, y);   // 適切な引数の指定をする
-    printf("wa = x+y = %d\nsa = x-y", wa, sa);
+    wasa(&wa, &sa, x, y);   // 適切な引数の指定をする
+    printf("wa = x+y = %d\nsa = x-y = %d", wa, sa);
     return 0;
 }
 
-void wasa(wa, sa, x, y){
-    int sum = x + y;
-    int def = x - y; 
-    char *wa = &sum;
-    char *sa = &def;
+void wasa(int *sum, int *def, int x2,int y2){
+    *sum = x2 + y2;
+    *def = x2 - y2;
 }
