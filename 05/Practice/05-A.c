@@ -1,5 +1,9 @@
 #include <stdio.h>
+<<<<<<< HEAD
+#define N 1
+=======
 #define N 3
+>>>>>>> a0956db05f0dde679e44f603a50551e84e966964
 
 typedef struct{
     int id; // id
@@ -29,8 +33,12 @@ int main(void){
     int kokugo = 0;
     int sansu = 0;
     int rika = 0;
+<<<<<<< HEAD
+    for(int i=0; seiseki[i].id >= 0 && i <= 100; i++){
+=======
     for(int i=0; seiseki[i].id >= 0 && i < N; i++)
     {
+>>>>>>> a0956db05f0dde679e44f603a50551e84e966964
         printf("%d: %s %d\n", seiseki[i].id, seiseki[i].name, (seiseki[i].kokugo + seiseki[i].sansu + seiseki[i].rika) / 3);
         n++;
         kokugo += seiseki[i].kokugo;
