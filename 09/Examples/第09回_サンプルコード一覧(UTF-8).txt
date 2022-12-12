@@ -1,0 +1,184 @@
+========================================================================
+// No.09-01 : 濃度変換(線形変換)
+
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+
+// double型のピクセル値を、unsigned char型で返す。0未満の値は0に、255以上の値は255にクリップする
+unsigned char clip(double v) {
+    return (v > 255) ? 255 : (v < 0) ? 0 : (unsigned char)v;
+}
+
+
+
+// 線形変換(Linear Stretch)
+// dst: 変換結果の画像
+// src: 変換元の画像
+// dst = src * a + b 
+void linear(IplImage* dst, IplImage* src, double a, double b) {
+    double v;
+    for (int y = 0; y < src->height; y++) {
+        for (int x = 0; x < src->width; x++) {
+            for (int ch = 0; ch < src->nChannels; ch++) {   // グレイスケールとカラー両方まとめて処理するためのループ
+                v = ... // 一旦 double で計算
+                dst->imageData[dst->widthStep * y + x * dst->nChannels + ch] = clip(v);
+            }
+        }
+    }
+}
+
+
+void main() {
+
+    IplImage* src;
+    IplImage* dst;
+    double a, b;  // 係数
+
+    int mode = 0;  // この値でモードを切り替える
+
+    char filename[] = "Mandrill.bmp";
+
+
+
+    switch (mode) {
+    case 0:  // 無変換 ---------------------
+        a = 1.0;
+        b = 0.0;
+        break;
+
+    case 1:  // ①明るく -------------------
+        a = 1.0; // ここを調整
+        b = 0.0; // ここを調整
+        break;
+
+    case 2:  // ②暗く ---------------------
+        a = 1.0; // ここを調整
+        b = 0.0; // ここを調整
+        break;
+
+    case 3:  // ③コントラストを強く -------
+        a = 1.0; // ここを調整
+        b = 0.0; // ここを調整
+        break;
+
+    case 4:  // ④コントラストを弱く -------
+        a = 1.0; // ここを調整
+        b = 0.0; // ここを調整
+        break;
+
+    case 5:  // ⑤階調反転 -----------------
+        a = 1.0; // ここを調整
+        b = 0.0; // ここを調整
+        break;
+
+    default:  // ---------------------------
+        printf("modeが範囲外の値です\n");
+        return;
+    }
+
+
+    // 画像データの読み込み
+    if ((src = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
+        printf("画像ファイルの読み込みに失敗しました。\n");
+        return;
+    }
+    printf("%s\nnChannels = %d\n\nMode = %d\n\ta = %f\n\tb = %f\n", filename, src->nChannels, mode, a, b);
+
+    // 読み込んだ画像と同じサイズ, 同じチャンネル数(nChannels)の画像を生成
+    dst = cvCreateImage(cvSize(src->width, src->height), src->depth, src->nChannels);
+
+    cvNamedWindow("Source");
+    cvShowImage("Source", src);
+
+    linear(dst, src, a, b);
+
+    cvNamedWindow("Destination");
+    cvShowImage("Destination", dst);
+
+    cvWaitKey(0);
+    cvDestroyAllWindows();
+    cvReleaseImage(&dst);
+    cvReleaseImage(&src);
+    return;
+}
+
+------------------------------------------------------------------------
+// おまけ: テスト用の関数
+// a,b を指定して呼び出すと、変換前後の対応を出力できます
+void test(double a, double b) {
+    // 256個のピクセルの画像を生成
+    IplImage* t1 = cvCreateImage(cvSize(256, 1), IPL_DEPTH_8U, 1);
+    IplImage* t2 = cvCreateImage(cvSize(256, 1), IPL_DEPTH_8U, 1);
+    for (int i = 0; i < 256; i++)
+        t1->imageData[i] = i;
+    linear(t2, t1, a, b);
+    // 変換元 ==> 変換結果 の対応の一覧を出力
+    for (int i = 0; i < 256; i++)
+        printf("%d ==> %d\n", i, (unsigned char)t2->imageData[i]);
+}
+
+
+
+
+========================================================================
+// No.09-02 : 濃度変換(γ変換)
+
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+
+// double型のピクセル値を、unsigned char型で返す。0未満の値は0に、255以上の値は255にクリップする
+unsigned char clip(double v) {
+    return (v > 255) ? 255 : (v < 0) ? 0 : (unsigned char)v;
+}
+
+
+
+// γ変換(Gamma Stretch)
+// dst: 変換結果の画像
+// src: 変換元の画像
+// dst = 255 * (src/255)^(1/g)
+void gamma(IplImage* dst, IplImage* src, double g) {
+    // ここを実装する
+}
+
+
+void main() {
+
+    IplImage* src;
+    IplImage* dst;
+    double g = 1.0;  // 係数(ここを調整)
+
+    char filename[] = "Mandrill.bmp";
+
+    // 画像データの読み込み
+    if ((src = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
+        printf("画像ファイルの読み込みに失敗しました。\n");
+        return;
+    }
+    printf("%s\nnChannels = %d\n\ngamma = %f\n", filename, src->nChannels, g);
+
+    // 読み込んだ画像と同じサイズ, 同じチャンネル数(nChannels)の画像を生成
+    dst = cvCreateImage(cvSize(src->width, src->height), src->depth, src->nChannels);
+
+    cvNamedWindow("Source");
+    cvShowImage("Source", src);
+
+    gamma(dst, src, g);
+
+    cvNamedWindow("Destination");
+    cvShowImage("Destination", dst);
+
+    cvWaitKey(0);
+    cvDestroyAllWindows();
+    cvReleaseImage(&dst);
+    cvReleaseImage(&src);
+    return;
+}
+
+
+
+
+
+========================================================================
