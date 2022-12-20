@@ -1,0 +1,5 @@
+﻿  07-A.cpp
+  07-B.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\07\7\7\07-B.cpp(7,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  コードを生成中...
+  7.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\07\7\Debug\7.exe
