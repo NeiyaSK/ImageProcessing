@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <opencv/highgui.h>
 
@@ -37,12 +38,13 @@ void main()
 
         }
     }
+    // "Color"ウインドウを生成・表示しcolor.bmpに保存
     cvNamedWindow("Color");
     cvShowImage("Color", img);
     cvSaveImage("color.bmp", img);
 
-
+    // 全てのウインドウを閉じる
     cvWaitKey(0);
     cvDestroyAllWindows();
     cvReleaseImage(&img);
-}
+}*/

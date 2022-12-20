@@ -1,5 +1,5 @@
 // ‰Û‘èNo.07-B
-/*
+
 #include <stdio.h>
 #include <opencv/highgui.h>
 
@@ -77,4 +77,4 @@ void main()
     cvReleaseImage(&img);
     return;
 
-}*/
+}
