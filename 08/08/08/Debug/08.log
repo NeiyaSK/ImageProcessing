@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\08\08\08\main.cpp(12,14): warning C4244: '初期化中': 'double' から 'char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\08\08\08\main.cpp(27,46): warning C4309: '=': 定数値が切り捨てられました。
+C:\Users\hotar\Documents\Git\ImageProcessing\08\08\08\main.cpp(33,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  08.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\08\08\Debug\08.exe
