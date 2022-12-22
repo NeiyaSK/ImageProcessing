@@ -1,0 +1,281 @@
+========================================================================
+// No.10-01 : グレイスケール画像のヒストグラムを出力
+
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+// VisualStudio環境のみ : fopen() を使えるようにする
+#pragma warning(disable: 4996)
+
+
+// カラー画像をグレイスケール化  
+void bgr2gray(IplImage* gray, IplImage* bgr) {
+   // 前の課題で作成済み
+}
+
+void calc_histogram(unsigned int hist[], IplImage* gray) {
+    for (int y = 0; y < gray->height; y++) {
+        for (int x = 0; x < gray->width; x++) {
+            ; // ここで hist[] を計算
+        }
+    }
+}
+
+
+void main()
+{
+    IplImage* img;
+    IplImage* gray;
+    unsigned int hist[256] = { 0 };  // ヒストグラムを入れる
+
+    char filename[] = "Mandrill.bmp";
+    char outputFilename[] = "Histogram.csv";
+
+    // 画像データの読み込み
+    if ((img = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
+        printf("画像ファイルの読み込みに失敗しました。\n");
+        return;
+    }
+    // 読み込んだ画像と同じサイズのグレイスケール画像(nChannels=1)を生成
+    gray = cvCreateImage(cvSize(img->width, img->height), img->depth, 1);
+
+    cvNamedWindow("Original");
+    cvShowImage("Original", img);
+
+    if (img->nChannels == 3) {
+        // カラー画像だった場合、グレイスケール化した画像を表示
+        bgr2gray(gray, img);  // グレイスケール化
+
+        cvNamedWindow("Grayscale");
+        cvShowImage("Grayscale", gray);
+    }
+    else if (img->nChannels == 1) {
+        // グレイスケール画像だった場合はは、img_gray に元画像をコピーする
+        cvCopy(img, gray);
+    }
+
+
+    // ここまでで、カラー画像であればグレイスケール化したものが、
+    // もとからグレイスケール画像であれば、それをコピーしたものが、gray に入っている状態になる。
+
+    calc_histogram(hist, gray);  // ヒストグラムを計算
+    
+    FILE* fp = fopen(outputFilename, "w");  // 書き込み(上書き)モードでファイルオープン
+    for (int i = 0; i < 256; i++) {
+        printf("%d, %u\n", i, hist[i]);       // 画面出力
+        fprintf(fp, "%d, %u\n", i, hist[i]);  // ファイル出力
+    }
+    fclose(fp);
+
+    cvWaitKey(0);
+    cvDestroyAllWindows();
+    cvReleaseImage(&gray);
+    cvReleaseImage(&img);
+    return;
+}
+
+
+========================================================================
+// No.10-02 : 各種画像統計量の計算
+
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+
+// カラー画像をグレイスケール化  
+void bgr2gray(IplImage* gray, IplImage* bgr) {
+   // 前の課題で作成済み
+}
+
+void main()
+{
+    IplImage* img;
+    IplImage* gray;
+
+    char filename[] = "Mandrill.bmp";
+
+    // 画像データの読み込み
+    if ((img = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
+        printf("画像ファイルの読み込みに失敗しました。\n");
+        return;
+    }
+    // 読み込んだ画像と同じサイズのグレイスケール画像(nChannels=1)を生成
+    gray = cvCreateImage(cvSize(img->width, img->height), img->depth, 1);
+
+    cvNamedWindow("Original");
+    cvShowImage("Original", img);
+
+    if (img->nChannels == 3) {
+        // カラー画像だった場合、グレイスケール化した画像を表示
+        bgr2gray(gray, img);  // グレイスケール化
+
+        cvNamedWindow("Grayscale");
+        cvShowImage("Grayscale", gray);
+    }
+    else if (img->nChannels == 1) {
+        // グレイスケール画像だった場合はは、img_gray に元画像をコピーする
+        cvCopy(img, gray);
+    }
+
+
+    // ここまでで、カラー画像であればグレイスケール化したものが、
+    // もとからグレイスケール画像であれば、それをコピーしたものが、
+    // gray に入っている状態になる。
+
+
+    int minV = 255; // 最小値 : とりあえず最大値で初期化(より小さな値が見つかったら更新する)
+    int maxV = 0;   // 最大値 : とりあえず最小値で初期化(より大きな値が見つかったら更新する)
+    int range=0;      // 範囲   : 未初期化なので要注意
+    double mean=0;    // 平均値 : 未初期化なので要注意
+    // その他計算に必要な変数をここで宣言する
+
+    /* --- 余力のある人は以下も求めてみましょう ---
+    double std;     // 標準偏差 : 未初期化なので要注意
+    int median;     // 中央値: 未初期化なので要注意
+    int mode;       // 最頻値: 未初期化なので要注意
+                    // ※中央値や最頻値の計算には、ヒストグラムを使うと簡単
+    */
+
+    for (int y = 0; y < gray->height; y++) {
+        for (int x = 0; x < gray->width; x++) {
+            // このループを使って、各種統計量を求める
+        }
+    }
+
+    
+    // 計算結果の表示
+    printf("minV  = %d\n", minV);
+    printf("maxV  = %d\n", maxV);
+    printf("range = %d\n", range);
+    printf("mean  = %f\n\n", mean);
+
+    /* --- 余力のある人向け ---
+    printf("std    = %f\n", std);
+    printf("median = %d\n", median);
+    printf("mode   = %d\n", mode);
+    */
+
+
+    cvWaitKey(0);
+    cvDestroyAllWindows();
+    cvReleaseImage(&gray);
+    cvReleaseImage(&img);
+    return;
+}
+
+
+
+========================================================================
+// No.10-03 : 疑似カラー画像変換
+
+#include <stdio.h>
+#include <opencv/highgui.h>
+
+
+// カラー画像をグレイスケール化  
+void bgr2gray(IplImage* gray, IplImage* bgr) {
+   // 前の課題で作成済み
+}
+
+
+// グレイスケール値 g から、疑似カラーの R 値を求める
+unsigned char gray2pseudoR(unsigned char g) {
+    unsigned char ret = 0;
+    // ここを実装
+
+    return ret;
+}
+
+
+// グレイスケール値 g から、疑似カラーの G 値を求める
+unsigned char gray2pseudoG(unsigned char g) {
+    unsigned char ret;
+
+    // ここを実装
+    /* ↓これは HOT の場合のサンプル
+    if (g <= 96)
+        ret = 0;
+    else if (g <= 192)
+        ret = 255.0 / (192 - 96) * (g - 96);  // 整数演算にならないように 「255.0」 としている
+    else
+        ret = 255;
+    */
+
+    return ret;
+}
+
+// グレイスケール値 g から、疑似カラーの B 値を求める
+unsigned char gray2pseudoB(unsigned char g) {
+    unsigned char ret = 0;
+    // ここを実装
+
+    return ret;
+}
+
+
+// グレイスケール画像を疑似カラー化
+void gray2pseudoIm(IplImage* pseudo, IplImage* gray) {
+    unsigned char g;
+    for (int y = 0; y < gray->height; y++) {
+        for (int x = 0; x < gray->width; x++) {
+            g = (unsigned char)gray->imageData[gray->widthStep * y + x];
+            pseudo->imageData[pseudo->widthStep * y + x * 3 + 2] = gray2pseudoR(g); // R
+            pseudo->imageData[pseudo->widthStep * y + x * 3 + 1] = gray2pseudoG(g); // G
+            pseudo->imageData[pseudo->widthStep * y + x * 3 + 0] = gray2pseudoB(g); // B
+        }
+    }
+}
+
+
+void main()
+{
+    IplImage* img;
+    IplImage* gray;
+    IplImage* pseudo;
+
+    char filename[] = "Mandrill.bmp";
+    //char filename[] = "Gray.bmp";
+
+    // 画像データの読み込み
+    if ((img = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
+        printf("画像ファイルの読み込みに失敗しました。\n");
+        return;
+    }
+    // 読み込んだ画像と同じサイズのグレイスケール画像(nChannels=1)を生成
+    gray = cvCreateImage(cvSize(img->width, img->height), img->depth, 1);
+
+    // 読み込んだ画像と同じサイズのカラー画像(nChannels=3)を生成
+    pseudo = cvCreateImage(cvSize(img->width, img->height), img->depth, 3);
+
+    cvNamedWindow("Original");
+    cvShowImage("Original", img);
+
+    if (img->nChannels == 3) {
+        // カラー画像だった場合、グレイスケール化した画像を表示
+        bgr2gray(gray, img);  // グレイスケール化
+
+        cvNamedWindow("Grayscale");
+        cvShowImage("Grayscale", gray);
+    }
+    else if (img->nChannels == 1) {
+        // グレイスケール画像だった場合はは、img_gray に元画像をコピーする
+        cvCopy(img, gray);
+    }
+
+
+    // ここまでで、カラー画像であればグレイスケール化したものが、
+    // もとからグレイスケール画像であれば、それをコピーしたものが、
+    // gray に入っている状態になる。
+    gray2pseudoIm(pseudo, gray);  // グレイスケール画像を疑似カラー化
+
+    cvNamedWindow("Pseudo Color");
+    cvShowImage("Pseudo Color", pseudo);
+
+
+
+    cvWaitKey(0);
+    cvDestroyAllWindows();
+    cvReleaseImage(&gray);
+    cvReleaseImage(&img);
+    return;
+}
