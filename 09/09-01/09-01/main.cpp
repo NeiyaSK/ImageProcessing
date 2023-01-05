@@ -36,7 +36,7 @@ void main()
 
 	int mode = 5;	// この値でモードを切り替える
 
-	char filename[] = "C:/Users/hotar/Downloads/photo.jpg";
+	char filename[] = "C:/Users/hotar/Documents/Git/ImageProcessing/SampleImage/color/Mandrill.bmp";
 
 	switch (mode)
 	{
@@ -54,7 +54,7 @@ void main()
 		b = -50.0;
 		break;
 	case 3:		// ③コントラストを強く
-		a = 5.0;
+		a = 1.5;
 		b = 0.0;
 		break;
 	case 4:		// ④コントラストを弱く

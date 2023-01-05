@@ -12,7 +12,7 @@ void bgr2gray(IplImage* gray, IplImage* bgr) {
 			int b = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 0];
 			int g = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 1];
 			int r = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 2];
-			//gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.11447 * b;
+			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.11447 * b;
 		
 		}
 	}
@@ -33,7 +33,7 @@ void main() {
 	IplImage* gray;
 	unsigned int hist[256] = { 0 };		// ヒストグラムを入れる
 
-	char filename[] = "C:/Users/hotar/Downloads/photo.jpg";
+	char filename[] = "C:/Users/hotar/Documents/Git/ImageProcessing/SampleImage/color/Mandrill.bmp";
 	char outputFilename[] = "Hitogram.csv";
 
 	// 画像データの読み込み
@@ -66,6 +66,14 @@ void main() {
 
 	FILE* fp = fopen(outputFilename, "w");	// 書き込み（上書き）モードでファイルオープン
 	for (int i = 0; i < 256; i++) {
-		printf("%d, %u\n")
+		printf("%d, %u\n",i, hist[i]);
+		fprintf(fp, "%d, %u\n", i, hist[i]);
 	}
+	fclose(fp);
+
+	cvWaitKey(0);
+	cvDestroyAllWindows();
+	cvReleaseImage(&gray);
+	cvReleaseImage(&img);
+	return;
 }

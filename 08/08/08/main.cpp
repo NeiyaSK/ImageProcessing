@@ -33,11 +33,11 @@ void main() {
 	IplImage* img_gray;
 	IplImage* img_bin;
 	char th = 127;
-	char filename[] = "C:/Users/hotar/Downloads/photo.jpg";
+	char filename[] = "C:/Users/hotar/Documents/Git/ImageProcessing/SampleImage/color/Mandrill.bmp";
 
 	 // 画像データの読み込み
 	if ((img = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {
-		printf("画像ファイルの読み込みに失敗しました． \n");
+		printf("画像ファイルの読み込みに失敗しました． /n");
 		return;
 	}
 	// 読み込んだ画像と同じサイズのグレイスケール画像(nChannels=1)を生成
@@ -46,7 +46,7 @@ void main() {
 	cvNamedWindow("Original");
 	cvShowImage("Original", img);
 
-	printf("nChannels = %d\n", img->nChannels);
+	printf("nChannels = %d/n", img->nChannels);
 	if (img->nChannels == 3) {
 		// カラー画像だった場合，グレイスケール化した画像を表示
 		printf("---Color Image\n");

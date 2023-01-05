@@ -1,7 +1,4 @@
 ﻿  main.cpp
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(16,14): warning C4244: '初期化中': 'double' から 'char' への変換です。データが失われる可能性があります。
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(32,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(70,10): warning C4473: 'printf': 書式文字列として渡された引数が不足しています
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(70,10): message : プレースホルダーとそのパラメーターには 2 の可変個引数が必要ですが、0 が指定されています。
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(70,10): message : 不足している可変個引数 1 が書式文字列 '%d' に必要です
-C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(71,2): error C2143: 構文エラー: ';' が '}' の前にありません。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(15,75): warning C4244: '=': 'double' から 'char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(31,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  10.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\10\10\Debug\10.exe
