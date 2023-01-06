@@ -76,7 +76,7 @@ void main()
 		printf("画像ファイルの読み込みに失敗しました．");
 		return;
 	}
-	printf("%snnChannels = %d\n\nMode = %d\n\ta = %f\n\tb = %f\n", filename, src->nChannels, mode, a, b);
+	printf("%s\nnChannels = %d\n\nMode = %d\n\ta = %f\n\tb = %f\n", filename, src->nChannels, mode, a, b);
 
 	// 読み込んだ画像と同じサイズ，同じチャンネル数（nChannels)の画像を生成
 	dst = cvCreateImage(cvSize(src->width, src->height), src->depth, src->nChannels);

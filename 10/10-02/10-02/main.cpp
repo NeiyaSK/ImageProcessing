@@ -11,7 +11,7 @@ void bgr2gray(IplImage* gray, IplImage* bgr) {
 			int b = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 0];
 			int g = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 1];
 			int r = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 2];
-			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.11447 * b;
+			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.114478 * b;
 
 		}
 	}
@@ -64,13 +64,13 @@ void main() {
 			double data = (unsigned char)gray->imageData[gray->widthStep * y + x];
 
 			// Min
-			if (minV > data)
+			if (data <= minV)
 				minV = data;
 			else
 				;
 
 			// Max
-			if (maxV < data)
+			if (data >= maxV)
 				maxV = data;
 			else
 				;
@@ -90,7 +90,7 @@ void main() {
 	printf("minV = %d\n", minV);
 	printf("maxV = %d\n", maxV);
 	printf("range = %d\n", range);
-	printf("mean = %lf\n\n", mean);
+	printf("mean = %f\n\n", mean);
 
 	cvWaitKey(0);
 	cvDestroyAllWindows();

@@ -29,7 +29,8 @@ void gamma(IplImage* dst, IplImage* src, double g) {
 void main() {
 	IplImage* src;
 	IplImage* dst;
-	double g = 1.5; // 係数(ここを調整)
+	double g = 0.5; // 係数(ここを調整)
+
 	char filename[] = "C:/Users/hotar/Documents/Git/ImageProcessing/SampleImage/color/Mandrill.bmp";
 	// 画像データの読み込み
 	if ((src = cvLoadImage(filename, CV_LOAD_IMAGE_UNCHANGED)) == NULL) {

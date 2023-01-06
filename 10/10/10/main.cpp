@@ -12,18 +12,18 @@ void bgr2gray(IplImage* gray, IplImage* bgr) {
 			int b = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 0];
 			int g = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 1];
 			int r = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 2];
-			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.11447 * b;
+			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.114478 * b;
 		
 		}
 	}
 }
 
 void calc_histogram(unsigned int hist[], IplImage* gray) {
+	int data = 0;
 	for (int y = 0; y < gray->height; y++) {
 		for (int x = 0; x < gray->width; x++) {
-			for (int i = 0; i < 256; i++) {
-				hist[i]++;
-			}
+				data = (unsigned char)gray->imageData[gray->widthStep * y + x];
+				hist[data]++;
 		}
 	}
 }
@@ -41,7 +41,7 @@ void main() {
 		printf("画像ファイルの読み込みに失敗しました．\n");
 		return;
 	}
-	// 読み込んだ画像と同じサイズのグレイスエール画像(nChannels=1)を生成
+	// 読み込んだ画像と同じサイズのグレイスケール画像(nChannels=1)を生成
 	gray = cvCreateImage(cvSize(img->width, img->height), img->depth, 1);
 
 	cvNamedWindow("Original");
