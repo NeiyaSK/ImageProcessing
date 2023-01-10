@@ -1,0 +1,6 @@
+﻿  main.cpp
+D:\Documents\ImageProcessing\08\08\08\08\main.cpp(19,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+D:\Documents\ImageProcessing\08\08\08\08\main.cpp(24,29): error C2065: 'img': 定義されていない識別子です。
+D:\Documents\ImageProcessing\08\08\08\08\main.cpp(24,9): warning C4473: 'printf': 書式文字列として渡された引数が不足しています
+D:\Documents\ImageProcessing\08\08\08\08\main.cpp(24,9): message : プレースホルダーとそのパラメーターには 1 の可変個引数が必要ですが、0 が指定されています。
+D:\Documents\ImageProcessing\08\08\08\08\main.cpp(24,9): message : 不足している可変個引数 1 が書式文字列 '%d' に必要です
