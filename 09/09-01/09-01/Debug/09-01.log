@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\09\09-01\09-01\main.cpp(32,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  09-01.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\09\09-01\Debug\09-01.exe

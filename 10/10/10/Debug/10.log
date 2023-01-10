@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(15,75): warning C4244: '=': 'double' から 'char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10\10\main.cpp(31,13): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  10.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\10\10\Debug\10.exe
