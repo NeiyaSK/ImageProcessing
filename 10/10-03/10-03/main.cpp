@@ -5,13 +5,30 @@
 
 // カラー画像をグレイスケール化
 void bgr2gray(IplImage* gray, IplImage* bgr) {
-	// 前の課題で作成済み
+	for (int y = 0; y < gray->height; y++) {
+		for (int x = 0; x < gray->width; x++) {
+			int b = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 0];
+			int g = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 1];
+			int r = (unsigned char)bgr->imageData[bgr->widthStep * y + x * 3 + 2];
+			gray->imageData[gray->widthStep * y + x] = 0.298912 * r + 0.586611 * g + 0.114478 * b;
+
+		}
+	}
 }
 
 // グレイスケール値 g から、疑似カラーの R 値を求める
 unsigned char gray2pseudoR(unsigned char g) {
 	unsigned char ret = 0;
 	// ここを実装
+	if (g <= 96)
+		ret = 0;
+	else if (g <= 160)
+		ret = 255.0 / (160 - 96) * (g - 96);
+	else if (g <= 224)
+		ret = 255;
+	else
+		ret = (128.0 - 255.0) / (255 - 224) * (g -255) - 128;
+
 	return ret;
 }
 
@@ -19,13 +36,16 @@ unsigned char gray2pseudoR(unsigned char g) {
 unsigned char gray2pseudoG(unsigned char g) {
 	unsigned char ret = 0;
 	// ここを実装
-	// ↓これは HOT の場合のサンプル
-	if (g <= 96)
-	ret = 0;
-	else if (g <= 192)
-	ret = 255.0 / (192 - 96) * (g - 96); // 整数演算にならないように 「255.0」 としている
+	if (g <= 32)
+		ret = 0;
+	else if (g <= 96)
+		ret = 255.0 / (96 - 32) * (g - 32);
+	else if (g <= 160)
+		ret = 255;
+	else if (g <= 224)
+		ret = -255.0 / (224 - 160) * (g - 224);
 	else
-	ret = 255;
+		ret = 0;
 
 	return ret;
 }
@@ -34,6 +54,15 @@ unsigned char gray2pseudoG(unsigned char g) {
 unsigned char gray2pseudoB(unsigned char g) {
 	unsigned char ret = 0;
 	// ここを実装
+	if (g <= 32)
+		ret = (255.0 - 128.0) / 32 * g + 128;
+	else if (g <= 96)
+		ret = 255;
+	else if (g <= 160)
+		ret = -255.0 / (160 - 96) * (g - 160);
+	else
+		ret = 0;
+	
 	return ret;
 }
 
@@ -56,7 +85,7 @@ void main()
 	IplImage* gray;
 	IplImage* pseudo;
 
-	char filename[] = "Mandrill.bmp";
+	char filename[] = "C:/Users/hotar/Documents/Git/ImageProcessing/10/Gray.bmp";
 	//char filename[] = "Gray.bmp";
 
 	// 画像データの読み込み

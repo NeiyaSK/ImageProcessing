@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(13,75): warning C4244: '=': 'double' から 'char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(26,28): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(30,50): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(42,27): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(46,30): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(58,34): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(62,29): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(83,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\10-03\main.cpp(93,10): warning C4566: ユニバーサル文字名 '\u00A5' によって表示されている文字は、現在のコード ページ (932) で表示できません
+  10-03.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\10\10-03\Debug\10-03.exe
