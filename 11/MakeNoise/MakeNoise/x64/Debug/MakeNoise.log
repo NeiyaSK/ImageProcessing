@@ -1,0 +1,2 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\11\MakeNoise\MakeNoise\main.cpp(18,10): fatal  error C1083: include ファイルを開けません。'opencv/highgui.h':No such file or directory
