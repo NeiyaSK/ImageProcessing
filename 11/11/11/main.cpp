@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <opencv/highgui.h>
+#define M_E
+
 
 // フィルタ係数等のフィルタのパラメータを保持する構造体
 typedef struct {
@@ -94,7 +96,9 @@ void makeMovingAverageOpe(Operator* ope) {
     // IplImage の imageData でのアクセスと同様の方法(widthStep を使う)でアクセスする
 
     // ----
-    // ここにコードを追加
+    for (int i = 0; i < ope->size; i++) {
+        ope->weight[(int)ope->widthStep + i] = 1.0 / 9.0;
+    }
     // ----
 
     printf("MovingAverage :\n\tope.size = %d (%d x %d)\n", ope->size, ope->size * 2 + 1, ope->size * 2 + 1);
@@ -109,17 +113,21 @@ void makeGaussianOpe(Operator* ope) {
     // ----
     // ここにコードを追加
 
-    /* // ヒント : 以下のようなループを使うと楽(※この通りにしなくてもOK)
+    // ヒント : 以下のようなループを使うと楽(※この通りにしなくてもOK)
     int m, n;
+    double s = 0, h2= 0;
+
     for (int y = 0; y < ope->widthStep; y++) {
         for (int x = 0; x < ope->widthStep; x++) {
             m = x - ope->size;
             n = y - ope->size;
-            ope->weight[y * (int)ope->widthStep + x] = ...
+
+            h2 = exp(pow(m, 2.0) + (n, 2.0) / 2 * pow(ope->sigma, 2.0));
+            s += h2;
+            ope->weight[y * (int)ope->widthStep + x] = h2 / s;
         }
     }
-    ...
-    */
+ 
 
     // ----
 
@@ -153,7 +161,7 @@ void main(int argc, char* argv[])
     strcpy_s(fn, 256, argv[1]);
     */
 
-    char fn[] = "Parrots(Color)+WhiteNoise.bmp"; // Drag&Dropで処理する場合は　②ここをコメントアウトする
+    char fn[] = "C:/Users/hotar/Documents/Git/ImageProcessing/12/SampleImage_12-20230119/Pattern/26.png"; // Drag&Dropで処理する場合は　②ここをコメントアウトする
 
 
 

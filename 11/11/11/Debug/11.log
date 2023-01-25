@@ -1,5 +1,4 @@
-﻿  makenoise.cpp
-C:\Users\hotar\Documents\Git\ImageProcessing\11\11\11\makenoise.cpp(59,88): warning C4309: '=': 定数値が切り捨てられました。
-C:\Users\hotar\Documents\Git\ImageProcessing\11\11\11\makenoise.cpp(74,106): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\hotar\Documents\Git\ImageProcessing\11\11\11\makenoise.cpp(98,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\11\11\11\main.cpp(57,12): warning C4244: 'return': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\11\11\11\main.cpp(141,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
   11.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\11\11\Debug\11.exe
