@@ -152,7 +152,7 @@ void makeYDiffOpe(Operator* ope) {
     ope->size = 1;
     ope->widthStep = ope->size * 2 + 1;
     free(ope->weight);
-    ope->weight = (double*)malloc(sizeof(double) * ope->widthStep * ope->widthStep);
+    ope->weight = (double*)malloc(sizeof(double) * ope->widthStep * ope->widthStep);@\
     ope->stretch = 1;
 
     ope->weight[0] = 0; ope->weight[1] = 0;     ope->weight[2] = 0;

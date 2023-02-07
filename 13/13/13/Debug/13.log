@@ -1,3 +1,4 @@
 ﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\13\13\13\main.cpp(58,31): warning C4244: '=': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
 C:\Users\hotar\Documents\Git\ImageProcessing\13\13\13\main.cpp(101,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
   13.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\13\13\Debug\13.exe

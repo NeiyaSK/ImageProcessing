@@ -39,7 +39,7 @@ unsigned char medianFilter(IplImage* subImg, int ch) {
     unsigned char neighbor[(OPE_SIZE * 2 + 1) * (OPE_SIZE * 2 + 1)];
     int n = (OPE_SIZE * 2 + 1) * (OPE_SIZE * 2 + 1);
     int i = 0;
-    int tmp = 0;
+    double tmp = 0;
 
     // 近傍のピクセル値を neighbor[] に収集
     for (int y = 0; y < subImg->height; y++) {

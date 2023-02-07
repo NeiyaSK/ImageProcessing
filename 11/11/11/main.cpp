@@ -99,7 +99,7 @@ void makeMovingAverageOpe(Operator* ope) {
     
     for (int y = 0; y < ope->widthStep; y++) {
         for (int x = 0; x < ope->widthStep; x++) {
-            ope->weight[(int)ope->widthStep * y + x] = 1.0 / ((2 * ope->size + 1) * (2*ope->size + 1));
+            ope->weight[(int)ope->widthStep * y + x] = 1.0 / ((2 * ope->size + 1) * (2 * ope->size + 1));
         }
     }
     // ----
