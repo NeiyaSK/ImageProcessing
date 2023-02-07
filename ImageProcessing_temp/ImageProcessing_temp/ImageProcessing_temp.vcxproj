@@ -24,7 +24,7 @@
     <ProjectGuid>{7476c015-5a7d-4811-9476-08fa890dd11d}</ProjectGuid>
     <RootNamespace>ImageProcessingtemp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>temp</ProjectName>
+    <ProjectName>13</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -234,7 +234,7 @@ void makeLaplacianOpe(Operator* ope) {
 
 // 鮮鋭化フィルタの係数を作る
 void makeSharpenOpe(Operator* ope) {
-    ope->size = 1;     // 今回は　ope->sie = 1 固定としてよい
+    ope->size = 1;     // 今回は　ope->size = 1 固定としてよい
     ope->widthStep = ope->size * 2 + 1;
     free(ope->weight);
     ope->weight = (double*)malloc(sizeof(double) * ope->widthStep * ope->widthStep);
@@ -243,7 +243,7 @@ void makeSharpenOpe(Operator* ope) {
     // 【ここを作成】
     ope->weight[0] = 0;    ope->weight[1] = -1;    ope->weight[2] = 0;
     ope->weight[3] = -1;     ope->weight[4] = 5;      ope->weight[5] = -1;
-    ope->weight[6] = 0;     ope->weight[7] = 1;      ope->weight[8] = 0;
+    ope->weight[6] = 0;     ope->weight[7] = -1;      ope->weight[8] = 0;
 }
 
 
@@ -301,7 +301,7 @@ void main(int argc, char* argv[])
 
     img2 = cvCreateImage(cvSize(img1->width, img1->height), img1->depth, img1->nChannels);   // 読み込んだ画像と同じ大きさの画像を生成;
 
-    // -------------------------------------------------------------
+    // XDiff
     cvSetZero(img2);   // 0(黒)で初期化しておく
 
     makeXDiffOpe(&ope);
@@ -312,19 +312,69 @@ void main(int argc, char* argv[])
     cvShowImage("XDiff", img2);
     printf("\n");
 
-
-    // -------------------------------------------------------------
-    // -------------------------------------------------------------
-    // -------------------------------------------------------------
-    // -------------------------------------------------------------
     // ここに make???Ope() を呼び出して、結果を表示するコード書く
     // 【ここを作成】
-    // -------------------------------------------------------------
-    // -------------------------------------------------------------
-    // -------------------------------------------------------------
+
+    // YDiff
+    cvSetZero(img2);   // 0(黒)で初期化しておく
+
+    makeYDiffOpe(&ope);
+    showWeight(&ope);
+
+    filterImageDbl(img1, img2, ope);
+    cvNamedWindow("YDiff");
+    cvShowImage("YDiff", img2);
+    printf("\n");
 
 
-    // -------------------------------------------------------------
+    // XPrewitt
+    cvSetZero(img2);   // 0(黒)で初期化しておく
+
+    makeXPrewittOpe(&ope);
+    showWeight(&ope);
+
+    filterImageDbl(img1, img2, ope);
+    cvNamedWindow("XPrewitt");
+    cvShowImage("XPrewitt", img2);
+    printf("\n");
+
+
+    // YPrewit
+    cvSetZero(img2);   // 0(黒)で初期化しておく
+
+    makeYPrewittOpe(&ope);
+    showWeight(&ope);
+
+    filterImageDbl(img1, img2, ope);
+    cvNamedWindow("YPrewitt");
+    cvShowImage("YPrewitt", img2);
+    printf("\n");
+
+    // XSobel
+    cvSetZero(img2);   // 0(黒)で初期化しておく
+
+    makeXSobelOpe(&ope);
+    showWeight(&ope);
+
+    filterImageDbl(img1, img2, ope);
+    cvNamedWindow("XSobel");
+    cvShowImage("XSobel", img2);
+    printf("\n");
+
+
+    // YSobel
+    cvSetZero(img2);   // 0(黒)で初期化しておく
+
+    makeYSobelOpe(&ope);
+    showWeight(&ope);
+
+    filterImageDbl(img1, img2, ope);
+    cvNamedWindow("YSobel");
+    cvShowImage("YSobel", img2);
+    printf("\n");
+
+    
+    // Laplacian
     cvSetZero(img2);   // 0(黒)で初期化しておく
 
     makeLaplacianOpe(&ope);       // ここでラプラシアンフィルタ用の係数等のパラメータを作成。
@@ -335,7 +385,7 @@ void main(int argc, char* argv[])
     cvShowImage("Laplacian", img2);
     printf("\n");
 
-    // -------------------------------------------------------------
+    // Sharpen
     cvSetZero(img2);   // 一旦消す
 
     makeSharpenOpe(&ope);        // ここで鮮鋭化フィルタ用の係数等のパラメータを作成。

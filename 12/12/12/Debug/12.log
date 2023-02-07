@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\hotar\Documents\Git\ImageProcessing\12\12\12\main.cpp(69,15): warning C4244: 'return': 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+C:\Users\hotar\Documents\Git\ImageProcessing\12\12\12\main.cpp(264,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+  12.vcxproj -> C:\Users\hotar\Documents\Git\ImageProcessing\12\12\Debug\12.exe

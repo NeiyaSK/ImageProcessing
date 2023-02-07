@@ -99,7 +99,7 @@ void main(int argc, char* argv[])
     IplImage* img1;
     IplImage* img2;
     int noiseType = 0;       // ノイズタイプ [0(Default):ホワイトノイズ, 1:ごま塩ノイズ]
-    double noiseLv = 0.05;   // ノイズレベル [noiseType==0 : ノイズの強度, noiseType==1 : ノイズの生起割合] (Default=0.05)
+    double noiseLv = 0.1;   // ノイズレベル [noiseType==0 : ノイズの強度, noiseType==1 : ノイズの生起割合] (Default=0.05)
     const char* noiseStr[] = { "WhiteNoise", "Salt&PepperNoise" };
 
     // 起動オプションのチェック
